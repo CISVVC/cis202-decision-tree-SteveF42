@@ -88,6 +88,7 @@ int main(int argc,char *argv[])
     }
     Binary_tree questionTree = root;
     std::queue<char> pos;
+
     while(true)
     {
 
@@ -100,6 +101,7 @@ int main(int argc,char *argv[])
             std::cout <<"I GOT IT! ";
             std::cout << questionTree.data(); //PRINTS ANSWER
             std::cin >> input;
+            tolower(input[0]);
 
             if(input == "y")
             {
@@ -108,6 +110,7 @@ int main(int argc,char *argv[])
                 std::cout << '\n';
                 if(input == "y") {questionTree = root; continue;} 
                 else if(input == "n"){break;}
+                else{break; }
             }
             std::cout << "I give up. What is it? ";
             std::cin >> input;
