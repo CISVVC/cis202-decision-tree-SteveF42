@@ -99,7 +99,7 @@ int main(int argc,char *argv[])
             std::string question = "";
 
             std::cout <<"I GOT IT! ";
-            std::cout << questionTree.data(); //PRINTS ANSWER
+            std::cout << questionTree.data() << " "; //PRINTS ANSWER
             std::cin >> input;
             tolower(input[0]);
 
