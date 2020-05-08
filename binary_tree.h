@@ -3,13 +3,13 @@
 #define BINARY_TREE_H
 
 #include <string>
+#include<queue>
 
-using namespace std;
 
 class Node
 {
 private:
-    string data;
+    std::string data;
     Node* left;
     Node* right;
     friend class Binary_tree;
@@ -30,7 +30,7 @@ public:
        Constructs a tree with one node and no children.
        @param root_data the data for the root
     */
-    Binary_tree(string root_data);
+    Binary_tree(std::string root_data);
 
     /**
        Constructs a binary tree.
@@ -38,7 +38,7 @@ public:
        @param left the left subtree
        @param right the right subtree
     */
-    Binary_tree(string root_data, Binary_tree left, Binary_tree right);
+    Binary_tree(std::string root_data, Binary_tree left, Binary_tree right);
 
 
     /**
@@ -57,7 +57,7 @@ public:
        Gets the data at the root of this tree.
        @return the root data
     */
-    string data() const;
+    std::string data() const;
 
     /**
        Gets the left subtree of this tree.
@@ -71,6 +71,8 @@ public:
     */
     Binary_tree right() const;
 
+    void addQuestion(std::string question, std::string info,std::queue<char> &answer);
+
 private:
     /**
        Returns the height of the subtree whose root is the given node.
@@ -78,7 +80,7 @@ private:
        @return the height of the subtree, or 0 if n is nullptr
     */
     int height(const Node* n) const;
-
+      void addQuestion(Node *&current,std::string question, std::string info, std::queue<char> &answer);
     Node* root;
 };
 
