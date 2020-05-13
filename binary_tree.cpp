@@ -65,43 +65,18 @@ Binary_tree Binary_tree::right() const
     return result;
 }
 
-void Binary_tree::addQuestion(Node *&current, std::string question, std::string info, std::queue<char> &answer)
+void Binary_tree::addQuestion(std::string question,Binary_tree current, Binary_tree newTree)
 {
-    if (!answer.empty())
-    {
-        if (answer.front() == 'y')
-        {
-            current = current->left;
-            answer.pop();
-            addQuestion(current, question, info, answer);
-        }
-        else if (answer.front() == 'n')
-        {
-            current = current->right;
-            answer.pop();
-            addQuestion(current, question, info, answer);
-        }
-    }
-    else
-    {
-        Node temp = *current;
-        current->data = question;
-        current->right = new Node;
-        current->left = new Node;
+    std::string temp = current.root->data;
+    current.root->data = question;
+    current.root->left = newTree.root;
 
-        Node *left = current->left;
-        Node *right = current->right;
+    Node* newRight = new Node;
+    newRight->data = temp;
+    newRight->right = nullptr;
+    newRight->left = nullptr;
+    
+    current.root->right = newRight;
 
-        *right = temp;
-
-        left->data = info;
-        left->right = nullptr;
-        left->left = nullptr;
-    }
 }
 
-void Binary_tree::addQuestion(std::string question, std::string info, std::queue<char> &answer)
-{
-    Node *current = root;
-    addQuestion(current, question, info, answer);
-}

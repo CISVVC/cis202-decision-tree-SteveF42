@@ -71,7 +71,12 @@ public:
     */
     Binary_tree right() const;
 
-    void addQuestion(std::string question, std::string info,std::queue<char> &answer);
+   /*
+      Takes a new question to be added
+      takes the current tree
+      requires a newTree with answer to be added
+   */
+    void addQuestion(std::string question,Binary_tree current, Binary_tree newTree);
 
 private:
     /**
@@ -80,7 +85,6 @@ private:
        @return the height of the subtree, or 0 if n is nullptr
     */
     int height(const Node* n) const;
-      void addQuestion(Node *&current,std::string question, std::string info, std::queue<char> &answer);
     Node* root;
 };
 

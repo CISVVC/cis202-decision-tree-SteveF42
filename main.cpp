@@ -99,7 +99,7 @@ int main(int argc,char *argv[])
             std::string question = "";
 
             std::cout <<"I GOT IT! ";
-            std::cout << questionTree.data() << " "; //PRINTS ANSWER
+            std::cout << questionTree.data() << " ";
             std::cin >> input;
             tolower(input[0]);
 
@@ -112,13 +112,17 @@ int main(int argc,char *argv[])
                 else if(input == "n"){break;}
                 else{break; }
             }
+
             std::cout << "I give up. What is it? ";
             std::cin >> input;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
             std::cout << "Please give me a question that is true for " << input <<  " and false for " << questionTree.data() << " ";
             getline(std::cin, question);
-            root.addQuestion(question,input,pos);
+
+            //tales in a new question, current tree, and a new tree with the given response
+            questionTree.addQuestion(question,questionTree,Binary_tree(input));
+
 
             std::cout << "Would you like to play again? ";
             std::cin >> input;
